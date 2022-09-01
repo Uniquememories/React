@@ -20,6 +20,8 @@ const ExpenseItem = (props) => {
   //if there is no info between the two closing tags <ExpenseDate></ExpenseDate> it can use a self closing tag <ExpenseDate/>
   //date={props.date} => to set the date props per the props.date in ExpenseDate.js
   //use the Card component to create the rounded corners of the cards
+  //onClick => adds an event listener for click events on the button 
+  //in line arrow function example for a button: <button onClick={() => {console.log('clicked!')}}>Change Title</button> 
 }
 
 export default ExpenseItem; 

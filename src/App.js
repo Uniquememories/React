@@ -1,5 +1,6 @@
 import React from "react";
 
+import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
 
 // function App() {
@@ -32,6 +33,11 @@ const App = () => {
     },
   ];
 
+  const addExpenseHandler = expense => {
+    console.log('In App.js');
+    console.log(expense); 
+  };
+
   //JSX Code behind the scenes
   // return React.createElement(
   //   'div', 
@@ -43,7 +49,8 @@ const App = () => {
   //JSX code ===> 
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense onAddExpense={addExpenseHandler} />
+      {/* pass a pointer with onAddExpense at the addExpenseHandler function so can call it in NewExpense.js */}
       <Expenses items={expenses}/>
     </div>
   );
