@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import './Expenses.css'
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 // function Expenses(props) {  //pass props in Expenses and use props.expenses to access the expenses from app.js file
 const Expenses = (props) => {
@@ -15,35 +16,23 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);  //set the filterd year to the selected year
   };
 
+  const filteredExpenses = props.items.filter(expense => {
+    return expense.date.getFullYear().toString() === filteredYear; 
+  });   //use props.items to access the expense items and with filter return true or false => check if the expense date year matches the filteredYear with getFullYear (toString converts to a string)
+
   return (
     <div>
       <Card className="expenses">
-        <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-        {/* selected controls the defaulted filtered year */}
-        <ExpenseItem 
-          title={props.items[0].title} 
-          amount={props.items[0].amount} 
-          date={props.items[0].date}
+        <ExpensesFilter 
+          selected={filteredYear} 
+          onChangeFilter={filterChangeHandler} 
         />
-        <ExpenseItem 
-          title={props.items[1].title} 
-          amount={props.items[1].amount} 
-          date={props.items[1].date}
-        />
-        <ExpenseItem 
-          title={props.items[2].title} 
-          amount={props.items[2].amount} 
-          date={props.items[2].date}
-        />
-        <ExpenseItem 
-          title={props.items[3].title} 
-          amount={props.items[3].amount} 
-          date={props.items[3].date}
-        />
+        <ExpensesChart expenses={filteredExpenses} />
+        <ExpensesList items={filteredExpenses} />
+        {/* filteredExpenses is passed in through the items property */}
       </Card>
     </div>
   );
-  //access each expense (items) in array with the indexes => [0].title to access the title/amount/date
 }
 
 export default Expenses; 

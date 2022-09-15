@@ -7,13 +7,15 @@ import './ExpenseItem.css'
 // function ExpenseItem (props) { //must be capital letters //props gets the key value pairs from each attribute in app.js (can name it anything but props is mostly used)
 const ExpenseItem = (props) => {
   return (
-    <Card className='expense-item'>
-      <ExpenseDate date={props.date}/>
-      <div className='expense-item__description'>
-        <h2>{props.title}</h2>  
-        <div className='expense-item__price'>${props.amount}</div>
-      </div>
-    </Card>
+    <li>
+      <Card className='expense-item'>
+        <ExpenseDate date={props.date}/>
+        <div className='expense-item__description'>
+          <h2>{props.title}</h2>  
+          <div className='expense-item__price'>${props.amount}</div>
+        </div>
+      </Card>
+    </li>
   ); 
   //single curly braces for dynamic data
   //toISOString => returns a date as a string

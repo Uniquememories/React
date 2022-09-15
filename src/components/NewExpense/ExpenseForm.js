@@ -15,7 +15,7 @@ const ExpenseForm = (props) => {
   // }); //groups together the three states instead of calling seperately 
 
   const titleChangeHandler = (event) => { //executed whenever the title input changes
-    console.log(event.target.value); // the current value the user entered with every keystroke
+    // console.log(event.target.value); // the current value the user entered with every keystroke
     setEnteredTitle(event.target.value);  //set the function to update the title to the current entered value
 
     //~~ alternative ways~~//
@@ -42,7 +42,7 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate)  //converts date into a date object
     };
 
@@ -89,6 +89,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className='new-expense_actions'>
+        <button type='button' onClick={props.onCancel}>Cancel</button>
         <button type='submit'>Add Expense</button>
         {/* listen to the form being submitted */}
       </div>
